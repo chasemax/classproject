@@ -36,6 +36,10 @@ app.get('/reports', function (req, res) {
     res.render('pages/reports');
 });
 
+app.get('/form', function (req, res) {
+    res.render('pages/reports');
+});
+
 app.post('/new', function (req, res) {
     console.log('Adding to the database:');
     console.log(req.body);
