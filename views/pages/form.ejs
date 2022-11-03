@@ -4,6 +4,69 @@
         <title>Index Page</title>
     </head>
     <body>
-        <h1>Welcome to our Student Employment Project Page!</h1>
+        <h1>Form</h1>
+
+        <form action="/new" method="post">
+            <input type="text" id="firstname" name="firstname">
+            <input type="text" id="lastname" name="lastname">
+            <input type="checkbox" id="international" name="international">
+            <select id="gender" name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to answer</option>
+            </select>
+            <input type="email" id="email" name="email">
+            <input type="number" id="exphours" name="exphours">
+            <select id="semester" name="semester">
+                <option>Fall</option>
+                <option>Winter</option>
+                <option>Spring</option>
+                <option>Summer</option>
+            </select>
+            <input type="number" id="semesteryear" name="semesteryear">
+            <input type="tel" id="phone" name="phone">
+            <input type="number" id="byuid" name="byuid">
+            <select id="positiontype" name="positiontype">
+                <option>TA</option>
+                <option>RA</option>
+                <option>Office</option>
+                <option>Student Instructor</option>
+                <option>Other</option>
+            </select>
+            <input type="text" id="classcode" name="classcode">
+            <select id="empl_record" name="empl_record">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <input type="text" id="supervisor" name="supervisor">
+            <input type="date" id="hiredate" name="hiredate">
+            <input type="number" id="payrate" name="payrate" step="0.05">
+            <input type="date" id="lastpayincrease" name="lastpayincrease">
+            <input type="number" id="payincreaseamount" name="payincreaseamount" step="0.05">
+            <input type="date" id="increaseinputdate" name="increaseinputdate">
+            <select id="yearinprogram" name="yearinprogram">
+                <option>MSB Core</option>
+                <option>MISM</option>
+                <option>MBA</option>
+                <option>MPA</option>
+                <option>MAcc</option>
+                <option>Other</option>
+            </select>
+            <input type="checkbox" id="gradtuition" name="gradtution">
+            <input type="checkbox" id="namechangecomplete" name="namechangecomplete">
+            <input type="text" id="notes" name="notes">
+            <input type="checkbox" id="terminated" name="terminated">
+            <input type="date" id="terminationdate" name="terminationdate">
+            <input type="checkbox" id="qualtricssurveysent" name="qualtricssurveysent">
+            <input type="checkbox" id="submittedeform" name="submittedeform">
+            <input type="date" id="eformsubmissiondate" name="eformsubmissiondate">
+            <input type="checkbox" id="workauthorization" name="workauthorization">
+            <input type="date" id="workauthorizationdate" name="workauthorizationdate">
+            <input type="text" id="byuname" name="byuname">
+
+            <input type="submit" value="Submit">
+          </form>
     </body>
 </html>
