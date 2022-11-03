@@ -37,7 +37,7 @@ app.get('/reports', function (req, res) {
 });
 
 app.get('/form', function (req, res) {
-    res.render('pages/reports');
+    res.render('pages/form');
 });
 
 app.post('/new', function (req, res) {
