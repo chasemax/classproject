@@ -12,7 +12,7 @@ var app = express();
 const knex = require('knex')({
     client: 'mysql',
     connection: {
-        host: '54.215.56.70',
+        host: '54.215.108.207',
         port: 3306,
         user: 'db-user',
         password: 'db-user',
@@ -29,7 +29,13 @@ app.get(['/', '/index'], function (req, res) {
 });
 
 app.get('/data', function (req, res) {
-    res.render('pages/data');
+    knex.select().from('Students')
+        .then((results) => {
+            console.log(results);
+            res.render('pages/data', {
+                results: results
+            });
+        });
 });
 
 app.get('/reports', function (req, res) {
