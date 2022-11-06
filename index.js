@@ -1,12 +1,8 @@
-/* TODO:
-
-
-
-
-*/
-
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
+var createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
 var app = express();
 
 const knex = require('knex')({
@@ -88,15 +84,34 @@ app.post('/new', function (req, res) {
         .then((results) => {
             res.render('pages/index');
         });
-    //var firstname = req.body[]
 });
 
-app.post('/edit', function (req, res) {
-    console.log('Received an edit post!');
-});
+app.get('/export', function (req, res) {
+    const csvWriter = createCsvWriter({
+        path: 'export.csv',
+        header: [
+          {id: 'LastName', title: 'LastName'},
+          {id: 'FirstName', title: 'FirstName'}
+        ]
+    });
 
-app.post('/delete', function (req, res) {
-    console.log('Received a delete post!');
+    knex.select('LastName', 'FirstName').from('Students')
+        .then((results) => {
+            var data = []
+            results.forEach(row => {
+                data.push({
+                    LastName : row.LastName,
+                    FirstName : row.FirstName
+                })
+            });
+            csvWriter.writeRecords(data)
+            .then(() => {
+                console.log("CSV Written!");
+                var file = `${__dirname}\\export.csv`;
+                res.download(file);
+            });
+            
+        });
 });
 
 app.listen(80);
