@@ -32,14 +32,84 @@
 
               <h1>Data</h1>
 
+              <table class="table" border="1">
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>International</th>
+                  <th>Gender</th>
+                  <th>Email Address</th>
+                  <th>Expected Hours to Work</th>
+                  <th>Semester</th>
+                  <th>Year</th>
+                  <th>Phone</th>
+                  <th>BYU ID</th>
+                  <th>Position Type</th>
+                  <th>Class Code</th>
+                  <th>Employee Record</th>
+                  <th>Supervisor</th>
+                  <th>Hire Date</th>
+                  <th>Pay Rate</th>
+                  <th>Last Pay Increase</th>
+                  <th>Pay Increase Amount</th>
+                  <th>Increase Input Date</th>
+                  <th>Year in Program</th>
+                  <th>Pay Grad Tuition?</th>
+                  <th>Name Change Completed</th>
+                  <th>Notes</th>
+                  <th>Terminated</th>
+                  <th>Termination Date</th>
+                  <th>Qualtrics Survey Sent?</th>
+                  <th>Submitted eForm</th>
+                  <th>eForm Submission Date</th>
+                  <th>Authorization to Work Received</th>
+                  <th>Authorization to Work Email Sent Date</th>
+                  <th>BYU Name</th>
+                </tr>
+                <script>
+                  function myFunction() {
+                    document.getElementById("name").style.backgroundColor = "yellow";
+                  }
+                </script>
               <% results.forEach(row => { %>
-                <p>
-                  <%= row.FirstName %>
-                  <%= row.FirstName %>
-                  <%= row.FirstName %>
-                  <%= row.FirstName %>
-                  <%= row.FirstName %>
-                </p>
+                <tr>
+                  <!-- change the conditionals to be if the authorization to begin work is not checked and the eForm submission date is greater than a week -->
+                  <td><% if(row.LastName == "Maxfield" && row.FirstName == "Chase"){ %>
+                    <p style="background-color: yellow"><%= row.FirstName %></p><% } else{ %>
+                    <%= row.FirstName %><% } %></td>
+                    <td><% if(row.LastName == "Maxfield" && row.FirstName == "Chase"){ %>
+                      <p style="background-color: yellow"><%= row.LastName %></p><% } else{ %>
+                      <%= row.LastName %><% } %></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
               <% }); %>
         </main>
     </body>
