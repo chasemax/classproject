@@ -76,10 +76,10 @@
               <% results.forEach(row => { %>
                 <tr>
                   <!-- change the conditionals to be if the authorization to begin work is not checked and the eForm submission date is greater than a week -->
-                  <td><% if(row.AuthorizationReceived == 0 && row.HireDate < moment().subtract(7, 'days')){ %>
+                  <td><% if(row.AuthorizationRecieved == 0 && row.HireDate < moment().subtract(7, 'days')){ %>
                     <p style="background-color: yellow"><%= row.FirstName %></p><% } else{ %>
                     <%= row.FirstName %><% } %></td>
-                    <td><% if(row.LastName == "Maxfield" && row.FirstName == "Chase"){ %>
+                    <td><% if(row.AuthorizationRecieved == 0 && row.HireDate < moment().subtract(7, 'days')){ %>
                       <p style="background-color: yellow"><%= row.LastName %></p><% } else{ %>
                       <%= row.LastName %><% } %></td>
                   <td><%= row.International %></td>
@@ -107,10 +107,10 @@
                   <td><%= row.TerminationDate %></td>
                   <td><%= row.QualtricsSurvey %></td>
                   <td><%= row.EForm %></td>
-                  <td><%= row.AuthorizationReceived %></td>
+                  <td><%= row.EFormSubmissionDate %></td>
+                  <td><%= row.AuthorizationRecieved %></td>
                   <td><%= row.AuthorizationEmailSentDate %></td>
                   <td><%= row.BYUName %></td>
-                  <td><%= row.EFormSubmissionDate %></td>
                 </tr>
               <% }); %>
         </main>
