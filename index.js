@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var createCsvWriter = require('csv-writer').createObjectCsvWriter;
 var moment = require('moment');
+var nodemailer = require('nodemailer');
 
 var app = express();
 
@@ -174,11 +175,9 @@ app.get('/export', function (req, res) {
         });
 });
 
-app.get("/send/:byuid", (req,res) => {
-    knex.select().from("studentemployeeis").where("byuid", req.params.byuid).then(person => {
-        app.listen(3000, () => console.log("the server is listening on port 3000"));
-        var nodemailer = require('nodemailer');
-
+app.post("/send/:byuid", (req,res) => {
+    knex.select().from("Students").where("BYUID", req.params.byuid).limit(1).then(row => {        
+        row = row[0];
         // Create the transporter with the required configuration for Outlook
         // change the user and pass !
         var transporter = nodemailer.createTransport({
@@ -197,10 +196,10 @@ app.get("/send/:byuid", (req,res) => {
         // setup e-mail data, even with unicode symbols
         var mailOptions = {
             from: 'classprojgroup123@outlook.com', // sender address (who sends)
-            to: person[0].EmailAddress, // list of receivers (who receives)
+            to: row.EmailAddress, // list of receivers (who receives)
             subject: 'Authorized for Work ', // Subject line
-            text: 'Hello ' + person[0].firstname + ', You have been authorized to work.', // plaintext body
-            html: '<b>Hello ' + person[0].firstname + ', </b><br> You have been authorized to work.' // html body
+            text: 'Hello ' + row.FirstName + ', You have been authorized to work.', // plaintext body
+            html: '<b>Hello ' + row.FirstName + ', </b><br> You have been authorized to work.' // html body
         };
 
         // send mail with defined transport object
@@ -210,6 +209,7 @@ app.get("/send/:byuid", (req,res) => {
             }
 
             console.log('Message sent: ' + info.response);
+            res.sendStatus(200);
         });
     });
 });
