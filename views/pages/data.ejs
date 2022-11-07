@@ -74,41 +74,41 @@
               <% results.forEach(row => { %>
                 <tr>
                   <!-- change the conditionals to be if the authorization to begin work is not checked and the eForm submission date is greater than a week -->
-                  <td><% if(row.LastName == "Maxfield" && row.FirstName == "Chase"){ %>
+                  <td><% if(row.AuthorizationReceived == 0 && row.HireDate < moment().subtract(7, 'days')){ %>
                     <p style="background-color: yellow"><%= row.FirstName %></p><% } else{ %>
                     <%= row.FirstName %><% } %></td>
                     <td><% if(row.LastName == "Maxfield" && row.FirstName == "Chase"){ %>
                       <p style="background-color: yellow"><%= row.LastName %></p><% } else{ %>
                       <%= row.LastName %><% } %></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><%= row.International %></td>
+                  <td><%= row.Gender %></td>
+                  <td><%= row.EmailAddress %></td>
+                  <td><%= row.ExpectedHours %></td>
+                  <td><%= row.Semester %></td>
+                  <td><%= row.YearWorking %></td>
+                  <td><%= row.Phone %></td>
+                  <td><%= row.BYUID %></td>
+                  <td><%= row.PositionType %></td>
+                  <td><%= row.ClassCode %></td>
+                  <td><%= row.EmployeeRecord %></td>
+                  <td><%= row.Supervisor %></td>
+                  <td><%= row.HireDate %></td>
+                  <td><%= row.PayRate %></td>
+                  <td><%= row.LastPayIncrease %></td>
+                  <td><%= row.PayIncreaseAmount %></td>
+                  <td><%= row.IncreaseInputDate %></td>
+                  <td><%= row.YearInProgram %></td>
+                  <td><%= row.PayGradTuition %></td>
+                  <td><%= row.NameChangeCompleted %></td>
+                  <td><%= row.Notes %></td>
+                  <td><%= row.Termination %></td>
+                  <td><%= row.TerminationDate %></td>
+                  <td><%= row.QualtricsSurvey %></td>
+                  <td><%= row.EForm %></td>
+                  <td><%= row.AuthorizationReceived %></td>
+                  <td><%= row.AuthorizationEmailSentDate %></td>
+                  <td><%= row.BYUName %></td>
+                  <td><%= row.EFormSubmissionDate %></td>
                 </tr>
               <% }); %>
         </main>

@@ -114,5 +114,45 @@ app.get('/export', function (req, res) {
         });
 });
 
+app.get("/send/:byuid", (req,res) => {
+    knex.select().from("studentemployeeis").where("byuid", req.params.byuid).then(person => {
+        app.listen(3000, () => console.log("the server is listening on port 3000"));
+        var nodemailer = require('nodemailer');
+
+        // Create the transporter with the required configuration for Outlook
+        // change the user and pass !
+        var transporter = nodemailer.createTransport({
+            host: "smtp-mail.outlook.com", // hostname
+            secureConnection: false, // TLS requires secureConnection to be false
+            port: 587, // port for secure SMTP
+            tls: {
+            ciphers:'SSLv3'
+            },
+            auth: {
+                user: 'classprojgroup123@outlook.com',
+                pass: 'Hiltonprojmanagement'
+            }
+        });
+
+        // setup e-mail data, even with unicode symbols
+        var mailOptions = {
+            from: 'classprojgroup123@outlook.com', // sender address (who sends)
+            to: person[0].EmailAddress, // list of receivers (who receives)
+            subject: 'Authorized for Work ', // Subject line
+            text: 'Hello ' + person[0].firstname + ', You have been authorized to work.', // plaintext body
+            html: '<b>Hello ' + person[0].firstname + ', </b><br> You have been authorized to work.' // html body
+        };
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                return console.log(error);
+            }
+
+            console.log('Message sent: ' + info.response);
+        });
+    });
+});
+
 app.listen(80);
 console.log("Server listening on port 80.");
