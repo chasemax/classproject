@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var createCsvWriter = require('csv-writer').createObjectCsvWriter;
+var moment = require('moment');
 
 var app = express();
 
@@ -29,7 +30,8 @@ app.get('/data', function (req, res) {
         .then((results) => {
             console.log(results);
             res.render('pages/data', {
-                results: results
+                results: results,
+                moment : moment
             });
         });
 });
